@@ -1,9 +1,10 @@
 {
   "name": "json-to-dom",
   "repo": "matthewmueller/json-to-dom",
-  "description": "fill in the dom with json",
+  "twitter": "@mattmueller",
+  "description": "fill in dom nodes with json",
   "version": "0.0.1",
-  "keywords": [],
+  "keywords": ["dom", "json", "json-to-dom"],
   "dependencies": {
     "yields/isArray" : "*",
     "matthewmueller/isObject" : "*"
