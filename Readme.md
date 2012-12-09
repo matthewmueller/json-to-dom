@@ -1,7 +1,7 @@
 
 # json-to-dom
 
-  Fill in the DOM with JSON.
+  Fill in DOM nodes with JSON. Supports arrays.
 
 ## Example
 
