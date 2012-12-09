@@ -51,11 +51,11 @@ outputs:
 
 ## Motivation
 
-It's much more flexible and simpler than most templating / binding engines.
+It's more flexible and simpler than most templating / binding engines.
 
 ## Design
 
-* JSON-to-DOM assumes the tags you are interested in are classes and that you are looking to replace `innerText`. I'm looking for ways to make this more flexible.
+* json-to-dom assumes the tags you are interested in are classes and that you are looking to replace `innerText`. I'm looking for ways to make this more flexible.
 
 * When json-to-dom encounters an arrays, it will repeat that block, even if you don't have any tags to match:
 
@@ -92,6 +92,35 @@ outputs:
 </ul>
 ```
 
+* You can reference plain array values using the `.key` class:
+
+```html
+<ul class="people">
+  <li class="person">
+    <span class="key">name</span>
+  </li>
+</ul>
+```
+
+```js
+var people = ['matt', 'drew'];
+
+render(document.querySelector('.people'), people);
+```
+
+outputs:
+
+```html
+<ul class="people">
+  <li class="person">
+    <span class="key">matt<span>
+  </li>
+  <li class="person">
+    <span class="key">drew<span>
+  </li>
+</ul>
+```
+
 * When json-to-dom encounters an object, it will fill in the classes it finds in the block using the object's keys:
 
 ```html
@@ -110,6 +139,7 @@ var email = {
   to : 'matt@matt.com',
   message : 'Reply with your bank credentials so we can send you the money'
 }
+```
 
 outputs:
 
