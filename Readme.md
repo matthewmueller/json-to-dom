@@ -59,7 +59,7 @@ json-to-dom assumes the tags you are interested in are **classes** and that you 
 
 ### Arrays
 
-json-to-dom will iterate over the selected block, even if you don't have any matched tags:
+#### json-to-dom will iterate over the selected block, even if you don't have any matched tags:
 
 ```html
 <ul class="people">
@@ -94,9 +94,7 @@ outputs:
 </ul>
 ```
 
----
-
-You can reference plain array values using the `.key` class:
+#### You can reference plain array values using the `.key` class:
 
 ```html
 <ul class="people">
@@ -127,7 +125,7 @@ outputs:
 
 ### Objects
 
-json-to-dom will fill in the classes it finds in the block using the object's keys:
+#### json-to-dom will fill in the classes it finds in the block using the object's keys:
 
 ```html
 <div class="email">
