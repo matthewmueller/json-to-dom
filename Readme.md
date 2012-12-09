@@ -55,9 +55,11 @@ It's more flexible and simpler than most templating / binding engines.
 
 ## Design
 
-* json-to-dom assumes the tags you are interested in are classes and that you are looking to replace `innerText`. I'm looking for ways to make this more flexible.
+json-to-dom assumes the tags you are interested in are **classes** and that you are looking to replace `innerText`. I'm looking for ways to make this more flexible.
 
-* When json-to-dom encounters an arrays, it will repeat that block, even if you don't have any tags to match:
+### Arrays
+
+json-to-dom will iterate over the selected block, even if you don't have any matched tags:
 
 ```html
 <ul class="people">
@@ -92,7 +94,9 @@ outputs:
 </ul>
 ```
 
-* You can reference plain array values using the `.key` class:
+---
+
+You can reference plain array values using the `.key` class:
 
 ```html
 <ul class="people">
@@ -121,7 +125,9 @@ outputs:
 </ul>
 ```
 
-* When json-to-dom encounters an object, it will fill in the classes it finds in the block using the object's keys:
+### Objects
+
+json-to-dom will fill in the classes it finds in the block using the object's keys:
 
 ```html
 <div class="email">
