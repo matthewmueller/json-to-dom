@@ -51,11 +51,29 @@ outputs:
 
 ## Motivation
 
-It's more flexible and simpler than most templating / binding engines.
+It's simpler and more flexible than most templating / binding engines.
+
+## API
+
+### `el = render(el, template)`
+
+Fills in `el` with the `template`. `template` may either be an object or array.
+
+```js
+el = render(document.querySelector('.contact'), author);
+```
+
+If the element is already on the page and you don't want to alter it immediately, use `cloneNode(true)`
+
+```js
+var body = render(document.body.cloneNode(true), json);
+// stuff
+document.body.innerHTML = body.innerHTML;
+```
 
 ## Design
 
-json-to-dom assumes the tags you are interested in are **classes** and that you are looking to replace `innerText`. I'm looking for ways to make this more flexible.
+json-to-dom assumes the tags you are interested in are **classes** and that you are looking to replace `innerText`. *I'm looking for ways to make this more flexible.*
 
 ### Arrays
 
@@ -154,16 +172,6 @@ outputs:
   <div class="to">matt@matt.com</div>
   <div class="message">Reply with your bank credentials so we can send you the money</div>
 </div>
-```
-
-## Miscellanous Tips
-
-* If the element is already on the page and you don't want to alter it immediately, use `cloneNode(true)`
-
-```js
-var body = render(document.body.cloneNode(true), json);
-// stuff
-document.body.innerHTML = body.innerHTML;
 ```
 
 ## License
