@@ -156,6 +156,16 @@ outputs:
 </div>
 ```
 
+## Miscellanous Tips
+
+* If the element is already on the page and you don't want to alter it immediately, use `cloneNode(true)`
+
+```js
+var body = render(document.body.cloneNode(true), json);
+// stuff
+document.body.innerHTML = body.innerHTML;
+```
+
 ## License
 
   MIT
