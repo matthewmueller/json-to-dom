@@ -3,7 +3,7 @@
   "repo": "matthewmueller/json-to-dom",
   "twitter": "@mattmueller",
   "description": "fill in dom nodes with json",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "keywords": ["dom", "json", "json-to-dom"],
   "dependencies": {
     "yields/isArray" : "*",
