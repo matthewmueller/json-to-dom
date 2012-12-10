@@ -1,7 +1,7 @@
 
 # json-to-dom
 
-  Fill in DOM nodes with JSON. Supports arrays.
+  Fill in DOM nodes with JSON. Supports arrays and attributes.
 
 ## Example
 
@@ -72,8 +72,6 @@ document.body.innerHTML = body.innerHTML;
 ```
 
 ## Design
-
-json-to-dom assumes the tags you are interested in are **classes** and that you are looking to replace `innerText`. *I'm looking for ways to make this more flexible.*
 
 ### Arrays
 
@@ -161,6 +159,8 @@ var email = {
   to : 'matt@matt.com',
   message : 'Reply with your bank credentials so we can send you the money'
 }
+
+render(document.querySelector('.email'), email)
 ```
 
 outputs:
@@ -171,6 +171,55 @@ outputs:
   <div class="from">money@nigeria.com</div>
   <div class="to">matt@matt.com</div>
   <div class="message">Reply with your bank credentials so we can send you the money</div>
+</div>
+```
+
+### Setting attributes
+
+json-to-dom will also work with attributes. The supported attributes are:
+
+* `data-html` : will set the `innerHTML`
+* `data-text` : will set the `innerText` (the default)
+* `data-[attr]` : will set the `attr` (ex. `data-value`)
+
+When you use data attributes, you have access to the other keys in the object block.
+
+```html
+<div class="note">
+  <a class="title" data-href="url"></a>
+</div>
+```
+
+```js
+var note = {
+  title : "This is a note",
+  url : "http://notes.com"
+}
+
+render(document.querySelector('.note'), note);
+```
+
+outputs:
+
+```html
+<div class="note">
+  <a class="title" href="http://notes.com">This is a note</a>
+</div>
+```
+
+If you'd like to not add the `innerText`, simply use a data attribute with the name of the class:
+
+```html
+<div class="note">
+  <a class="title" data-href="title"></a>
+</div>
+```
+
+outputs:
+
+```html
+<div class="note">
+  <a class="title" href="this is a note"></a>
 </div>
 ```
 

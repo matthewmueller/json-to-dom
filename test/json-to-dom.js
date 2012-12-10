@@ -1,8 +1,9 @@
-var render = require('json-to-dom'),
+  var render = require('json-to-dom'),
     assert = require('component-assert');
 
 var note = {
   title : 'this is a note',
+  url : 'http://note.com',
   date : new Date(),
   tags : [ 'javascript', 'travel' ],
   authors : [
@@ -100,13 +101,33 @@ describe('render', function() {
 
   it('should handle arrays as the initial value', function() {
     html.innerHTML = '<div class="people"><span class="first">First Name</span><span class="last">Last Name</span></div>';
-    // console.log(html.firstChild);
     html = render(html.firstChild, [
       { first : "matt", last : "mueller" },
       { first : "andrew", last : "quinn" }
     ]);
     var expected = '<div class="people"><span class="first">matt</span><span class="last">mueller</span><span class="first">andrew</span><span class="last">quinn</span></div>';
     assert(html.outerHTML === expected);
+  });
+
+  it('should replace attributes with data-attr', function() {
+    html.innerHTML = '<div class="authors"><input class="name" data-value="name" type="text"/></div>';
+    html = render(html, note);
+    var expected = '<div class="authors"><input class="name" type="text" value="matt"><input class="name" type="text" value="andrew"></div>';
+    assert(html.innerHTML === expected);
+  });
+
+  it('should replace attributes with anything in the object', function() {
+    html.innerHTML = '<a data-href="url" class="title"></a>';
+    html = render(html, note);
+    var expected = '<a class="title" href="http://note.com">this is a note</a>';
+    assert(html.innerHTML === expected);
+  });
+
+  it('should replace attributes with anything in the object', function() {
+    html.innerHTML = '<a data-href="url" class="title" data-alt="title"></a>';
+    html = render(html, note);
+    var expected = '<a class="title" href="http://note.com" alt="this is a note"></a>';
+    assert(html.innerHTML === expected);
   });
 });
 
