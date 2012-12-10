@@ -176,7 +176,7 @@ outputs:
 
 ### Setting attributes
 
-json-to-dom will also work with attributes. The supported attributes are:
+#### json-to-dom will also work with attributes. The supported attributes are:
 
 * `data-html` : will set the `innerHTML`
 * `data-text` : will set the `innerText` (the default)
@@ -207,7 +207,7 @@ outputs:
 </div>
 ```
 
-If you'd like to not add the `innerText`, simply use a data attribute with the name of the class:
+#### If you'd like to not add the `innerText`, simply use a data attribute with the name of the class:
 
 ```html
 <div class="note">
