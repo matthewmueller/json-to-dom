@@ -82,6 +82,7 @@ function json_to_dom(el, val, key, obj) {
  */
 
 function set(node, attr, val) {
+  val = val || '';
   switch(attr) {
     case 'innerHTML':
     case 'innerText':
